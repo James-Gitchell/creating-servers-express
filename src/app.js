@@ -6,13 +6,13 @@ const sayHello = (req, res, next) => {
     res.send('Hello!');
 
 }
-const logging = (req, res, next) => {
+/*const logging = (req, res, next) => {
     console.log('A request is being made!');
+*/ //----replaced with morgan
 
-
-    next();
-}
- app.use(logging);
+  //  next();}
+ //app.use(logging); */-->
+ app.use(morgan,('dev'));
  app.use(sayHello);
 
 
