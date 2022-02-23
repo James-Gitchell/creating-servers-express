@@ -1,19 +1,18 @@
 const express = require('express');
-const morgan = require("morgan");
+const morgan = require('morgan');
+
 const app = express();
 
 const sayHello = (req, res, next) => {
-    res.send('Hello!');
+   console.log(req.query);
+   const name = req.query.name;
+   const content = name ? `Hello, ${name}!` : "Hello!";
+   res.send(content);
 
 }
-/*const logging = (req, res, next) => {
-    console.log('A request is being made!');
-*/ //----replaced with morgan
 
-  //  next();}
- //app.use(logging); */-->
- app.use(morgan,('dev'));
- app.use(sayHello);
+ app.use(morgan('dev'));
+ app.get("/hello",sayHello);
 
 
 
