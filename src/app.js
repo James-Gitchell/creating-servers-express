@@ -10,9 +10,20 @@ const sayHello = (req, res, next) => {
    res.send(content);
 
 }
+const saySomething = (req, res) => {
+    const greeting = req.params.greeting;
+    const content = `${greeting}!`;
+    res.send(content);
+  };
+  
+  app.get("/say/:greeting", saySomething);
+
+
+
 
  app.use(morgan('dev'));
  app.get("/hello",sayHello);
+ app.get('/say/:greeting', saySomething);
 
 
 
